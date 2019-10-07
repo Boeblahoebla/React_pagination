@@ -54,5 +54,5 @@ app.get('/', (req,res)=> res.send('Hello from root of the server'));
 /////////
 
 // run de server
-const port = 3000;
+const port = 5000;
 app.listen(port, () =>  console.log('listening on port', port));
