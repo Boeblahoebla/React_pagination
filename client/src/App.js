@@ -1,11 +1,24 @@
+// Imports
+//////////
+
+// Base dependencies
 import React from 'react';
 
-function App() {
+// Components
+import Users from './components/users/Users';
+
+
+// Application Main component
+/////////////////////////////
+
+const App = () => {
     return (
         <div className="App">
-            <h1>Users</h1>
+            <div className="container">
+                <Users />
+            </div>
         </div>
     );
-}
+};
 
 export default App;
