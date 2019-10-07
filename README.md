@@ -1,6 +1,6 @@
 # REACT pagination
 ### Data
-Visit mockeroo to generate fake data. Create 1000 fake users & download the json file
+Visit mockeroo to generate fake data. Create 1000 fake users & download the CSV file
 
 ### Import
 Import the data into a mongodb db called **demo** with collection **users** into your locally running mongoDB instance
