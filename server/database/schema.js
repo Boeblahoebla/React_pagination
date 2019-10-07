@@ -22,7 +22,6 @@ module.exports
     = users
     = mongoose.model(
         'users',
-        userSchema,
-        'usersCollection');
+        userSchema);
 
 
