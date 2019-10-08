@@ -7,7 +7,7 @@ import React from 'react';
 // Component
 ////////////
 
-const PageItemDots = () => {
+const PageNumberDots = () => {
 
     return (
         <li className="m-2 text-secondary">...</li>
@@ -18,5 +18,5 @@ const PageItemDots = () => {
 // Export
 /////////
 
-export default PageItemDots;
+export default PageNumberDots;
 

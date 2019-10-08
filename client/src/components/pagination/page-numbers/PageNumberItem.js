@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 // Component
 ////////////
 
-const PageItem = ({pageNumber, active}) => {
+const PageNumberItem = ({pageNumber, active}) => {
 
     // Generate the listItem as active or not
     let listItem = '';
@@ -37,7 +37,7 @@ const PageItem = ({pageNumber, active}) => {
 };
 
 
-PageItem.propTypes = {
+PageNumberItem.propTypes = {
     pageNumber: PropTypes.number.isRequired,
     active: PropTypes.bool.isRequired,
 };
@@ -45,5 +45,5 @@ PageItem.propTypes = {
 // Export
 /////////
 
-export default PageItem;
+export default PageNumberItem;
 

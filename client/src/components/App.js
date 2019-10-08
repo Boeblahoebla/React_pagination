@@ -5,7 +5,7 @@
 import React from 'react';
 
 // Components
-import Users from './components/users/Users';
+import Users from './users/Users';
 
 
 // Application Main component
@@ -20,5 +20,9 @@ const App = () => {
         </div>
     );
 };
+
+
+// Export
+/////////
 
 export default App;

@@ -15,13 +15,15 @@ import Pagination from '../pagination/Pagination';
 ////////////
 
 const Users = () => {
+
     // Component state
     const [ data, setData ] = useState({});
     const [ page, setPage ] = useState(5);
     const [ size, setSize ] = useState(20);
     const [ loading, setLoading ] = useState(true);
 
-    // When the component 'mounts' load the data & reload when the page or size changes
+    // When the component 'mounts' fetch the data from the backend &
+    // fetch the data again when the chosen page or size changes
     useEffect(() => {
         setLoading(true);
         axios.get(`/api/users/all?pageNo=${page}&size=${size}`)
@@ -66,7 +68,6 @@ const Users = () => {
      * End of Event handlers *
      *************************/
 
-    // JSX markup
     return (
         <div>
             <h1>User list</h1>
