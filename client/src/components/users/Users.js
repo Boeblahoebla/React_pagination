@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios/index';
 
 // Components
-
+import Pagination from '../pagination/Pagination';
 
 
 // Component
@@ -37,6 +37,7 @@ const Users = () => {
     return (
         <div>
             <h1>User list</h1>
+            <Pagination/>
         </div>
     )
 };
