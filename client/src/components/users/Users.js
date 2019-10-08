@@ -2,7 +2,7 @@
 //////////
 
 // Base dependencies
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
 // Data fetching
 import axios from 'axios/index';
@@ -17,10 +17,10 @@ import Pagination from '../pagination/Pagination';
 const Users = () => {
 
     // Component state
-    const [ data, setData ] = useState({});
-    const [ page, setPage ] = useState(5);
-    const [ size, setSize ] = useState(20);
-    const [ loading, setLoading ] = useState(true);
+    const [data, setData] = useState({});
+    const [page, setPage] = useState(5);
+    const [size, setSize] = useState(10);
+    const [loading, setLoading] = useState(true);
 
     // When the component 'mounts' fetch the data from the backend &
     // fetch the data again when the chosen page or size changes
@@ -44,25 +44,20 @@ const Users = () => {
      * Event handlers *
      ******************/
 
-    const decrementPage = () => {
-        console.log('decrementing page');
-        page > 1 && setPage(page - 1);
-    };
+    // Decrement page handler
+    const decrementPage = () => { page > 1 && setPage(page - 1) };
 
-    const incrementPage = () => {
-        console.log('incrementing page');
-        setPage(page + 1)
-    };
+    // Increment page handler
+    const incrementPage = () => { page < data.pages && setPage(page + 1) };
 
-    const setPageBegin = () => {
-        console.log('going to first page');
-        setPage(1)
-    };
+    // Set first page handler
+    const setPageBegin = () => { setPage(1) };
 
-    const setPageEnd = () => {
-        console.log('going to last page');
-        setPage(data.pages)
-    };
+    // Set last page handler
+    const setPageEnd = () => { setPage(data.pages) };
+
+    // Set page number handler
+    const selectPage = (value) => { setPage(value) };
 
     /*************************
      * End of Event handlers *
@@ -73,10 +68,11 @@ const Users = () => {
             <h1>User list</h1>
             {!loading && <Pagination
                 data={data}
-                decrementPage={() => decrementPage()}
-                incrementPage={() => incrementPage()}
-                setPageEnd={() => setPageEnd()}
-                setPageBegin={() => setPageBegin()}
+                decrementPage={decrementPage}
+                incrementPage={incrementPage}
+                setPageEnd={setPageEnd}
+                setPageBegin={setPageBegin}
+                selectPage={selectPage}
             />}
         </div>
     )

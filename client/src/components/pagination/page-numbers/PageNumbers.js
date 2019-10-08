@@ -15,9 +15,6 @@ import PageNumberDots from './PageNumberDots';
 
 const PageNumbers = ({pages, currentPage}) => {
 
-    console.log('total pages: ' + pages);
-    console.log('current page: ' + currentPage);
-
     return (
         <div className="d-flex justify-content-center">
             <nav aria-label="Page navigation">
@@ -43,7 +40,7 @@ const PageNumbers = ({pages, currentPage}) => {
 
 
 // Prop types for the component
-PageNumbers.PropTypes = {
+PageNumbers.propTypes = {
     pages: PropTypes.number.isRequired,
     currentPage: PropTypes.number.isRequired
 };

@@ -4,9 +4,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const bodyparser =require ('body-parser');
-const morgan = require('morgan');
-const cors = require('cors');
+const bodyparser = require ('body-parser');
+// const morgan = require('morgan');
+// const cors = require('cors');
 
 const db = 'mongodb://localhost:27017/demo';
 
@@ -26,14 +26,14 @@ mongoose.set('useFindAndModify', false);
 /////////////
 
 // Connectivity
-app.use(cors());
+// app.use(cors());
 
 // JSON parsing
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
 
 // Logging
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 
 
 // Routes

@@ -13,7 +13,7 @@ import PageControlSearch from './PageControlSearch';
 // Component
 ////////////
 
-const PageControls = ({decrementPage, incrementPage, setPageEnd, setPageBegin}) => {
+const PageControls = ({ decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage }) => {
     return (
         <div className="d-flex justify-content-center">
             <nav aria-label="Page navigation">
@@ -22,7 +22,7 @@ const PageControls = ({decrementPage, incrementPage, setPageEnd, setPageBegin}) 
                     <PageControlItem icon="begin" action={setPageBegin}/>
                     <PageControlItem icon="previous" action={decrementPage}/>
 
-                    <PageControlSearch/>
+                    <PageControlSearch selectPage={selectPage}/>
 
                     <PageControlItem icon="next" action={incrementPage}/>
                     <PageControlItem icon="end" action={setPageEnd}/>
@@ -34,11 +34,12 @@ const PageControls = ({decrementPage, incrementPage, setPageEnd, setPageBegin}) 
 
 
 // Prop types for the component
-PageControls.PropTypes = {
+PageControls.propTypes = {
     decrementPage: PropTypes.func.isRequired,
     incrementPage: PropTypes.func.isRequired,
-    sePageEnd: PropTypes.func.isRequired,
-    setPageBegin: PropTypes.func.isRequired
+    setPageEnd: PropTypes.func.isRequired,
+    setPageBegin: PropTypes.func.isRequired,
+    selectPage: PropTypes.func.isRequired
 };
 
 

@@ -13,17 +13,13 @@ import PageControls from "./page-controls/PageControls";
 // Component
 ////////////
 
-const Pagination = ({data, decrementPage, incrementPage, setPageEnd, setPageBegin}) => {
-
-    console.log('Data object in Pagination component: ');
-    console.log('************************************');
-    console.log(data);
+const Pagination = ({ data, decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage }) => {
 
     let paginationContent = '';
 
     // Hide the controls when there is no data
-    if(!data.data) {
-        return(
+    if (!data.data) {
+        return (
             <div>{paginationContent}</div>
         )
     }
@@ -31,13 +27,11 @@ const Pagination = ({data, decrementPage, incrementPage, setPageEnd, setPageBegi
     // Generate the pagination content
     paginationContent = (
         <div className="mb-2">
-            <PageNumbers currentPage={data.currentPage} pages={data.pages} />
-            <PageControls
-                decrementPage={decrementPage} incrementPage={incrementPage}
-                setPageBegin={setPageBegin} setPageEnd={setPageEnd} />
+            <PageNumbers currentPage={data.currentPage} pages={data.pages}/>
+            <PageControls decrementPage={decrementPage} incrementPage={incrementPage}
+                setPageBegin={setPageBegin} setPageEnd={setPageEnd} selectPage={selectPage}/>
         </div>
     );
-
 
     return (
         <div>
@@ -53,7 +47,8 @@ Pagination.propTypes = {
     setPageEnd: PropTypes.func.isRequired,
     setPageBegin: PropTypes.func.isRequired,
     incrementPage: PropTypes.func.isRequired,
-    decrementPage: PropTypes.func.isRequired
+    decrementPage: PropTypes.func.isRequired,
+    selectPage: PropTypes.func.isRequired
 };
 
 

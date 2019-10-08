@@ -34,7 +34,7 @@ const PageControlItem = ({icon, action}) => {
         control= (
             <li className="page-item" onClick={action}>
                 <div className="page-link" aria-label="next">
-                    <i className="fas fa-fast-backward text-secondary"/>
+                    <i className="fas fa-forward text-secondary"/>
                 </div>
             </li>
         )
@@ -42,7 +42,7 @@ const PageControlItem = ({icon, action}) => {
         control = (
             <li className="page-item" onClick={action}>
                 <div className="page-link" aria-label="end">
-                    <i className="fas fa-fast-backward text-secondary"/>
+                    <i className="fas fa-fast-forward text-secondary"/>
                 </div>
             </li>
         )
@@ -52,7 +52,6 @@ const PageControlItem = ({icon, action}) => {
         <div>
             {control}
         </div>
-
     )
 };
 
