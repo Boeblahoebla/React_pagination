@@ -13,10 +13,19 @@ const PageItem = ({pageNumber, active}) => {
     // Generate the listItem as active or not
     let listItem = '';
 
-    if(active) {
-        listItem = <li className="page-item"><a className="page-link bg-info text-white" href="#">{pageNumber}</a></li>
+    // Format the page number correctly
+    let pageNumberText;
+    if(pageNumber < 10) {
+        pageNumberText = `0${pageNumber.toString()}`
     } else {
-        listItem = <li className="page-item"><a className="page-link text-secondary" href="#">{pageNumber}</a></li>
+        pageNumberText = pageNumber.toString()
+    }
+
+    // Choose the right  listItem to return
+    if(active) {
+        listItem = <li className="page-item"><a className="page-link bg-info text-white" href="#">{pageNumberText}</a></li>
+    } else {
+        listItem = <li className="page-item"><a className="page-link text-secondary" href="#">{pageNumberText}</a></li>
     }
 
     return (
@@ -29,7 +38,7 @@ const PageItem = ({pageNumber, active}) => {
 
 
 PageItem.propTypes = {
-    pageNumber: PropTypes.string.isRequired,
+    pageNumber: PropTypes.number.isRequired,
     active: PropTypes.bool.isRequired,
 };
 

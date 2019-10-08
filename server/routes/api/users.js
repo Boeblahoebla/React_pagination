@@ -11,7 +11,6 @@ const usersModel = require('../../database/schema');
 // Requests
 ///////////
 
-
 // GET ALL USERS route
 // @public /api/users/all
 router.get('/all', (req, res) => {
@@ -33,7 +32,7 @@ router.get('/all', (req, res) => {
     let response = {};
 
     // Find all the users
-    usersModel.find({},{},query,(err, data) => {
+    usersModel.find({},{},(err, data) => {
 
         // Error handling
         if (err) {
@@ -46,14 +45,36 @@ router.get('/all', (req, res) => {
             return res.status(500).json(response);
         }
 
-        // Prepare the data to send to the client
-        response = {
-            "error": false,
-            "data": data
-        };
+        // Count the records & calculate the number of pages
+        const numberOfRecords = data.length;
 
-        // Return the positive response to the client
-        res.status(200).json(response);
+        usersModel.find({},{},query,(err, data) => {
+            // Error handling
+            if (err) {
+                response = {
+                    "error": true,
+                    "data": "Problem while fetching the data"
+                };
+
+                // Return the negative response to the client
+                return res.status(500).json(response);
+            }
+
+            // Generate the response object
+            response = {
+                "error": false,
+                "records": numberOfRecords,
+                "currentPage": pageNo,
+                "recordsPerPage": size,
+                "pages": numberOfRecords/size,
+                "data": data
+            };
+
+            // Return the positive response to the client
+            return res.status(200).json(response);
+        })
+
+
     })
 });
 

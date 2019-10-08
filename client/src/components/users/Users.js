@@ -15,29 +15,68 @@ import Pagination from '../pagination/Pagination';
 ////////////
 
 const Users = () => {
-
     // Component state
-    const [ data, setData ] = useState([]);
+    const [ data, setData ] = useState({});
+    const [ page, setPage ] = useState(5);
+    const [ size, setSize ] = useState(20);
+    const [ loading, setLoading ] = useState(true);
 
-    // When the component 'mounts' load the data
+    // When the component 'mounts' load the data & reload when the page or size changes
     useEffect(() => {
-        axios.get('/api/users/all')
+        setLoading(true);
+        axios.get(`/api/users/all?pageNo=${page}&size=${size}`)
             .then(res => {
-                // Save the data in the state
-                setData(res.data.data);
+                // Save the values from the response in the state
+                setSize(res.data.recordsPerPage);
+                setPage(res.data.currentPage);
+                setData(res.data);
+                setLoading(false);
             })
             .catch(err => {
                 console.log(err)
             })
-    }, []);
+    }, [page, size]);
 
-    console.log(data);
+
+    /******************
+     * Event handlers *
+     ******************/
+
+    const decrementPage = () => {
+        console.log('decrementing page');
+        page > 1 && setPage(page - 1);
+    };
+
+    const incrementPage = () => {
+        console.log('incrementing page');
+        setPage(page + 1)
+    };
+
+    const setPageBegin = () => {
+        console.log('going to first page');
+        setPage(1)
+    };
+
+    const setPageEnd = () => {
+        console.log('going to last page');
+        setPage(data.pages)
+    };
+
+    /*************************
+     * End of Event handlers *
+     *************************/
 
     // JSX markup
     return (
         <div>
             <h1>User list</h1>
-            <Pagination/>
+            {!loading && <Pagination
+                data={data}
+                decrementPage={() => decrementPage()}
+                incrementPage={() => incrementPage()}
+                setPageEnd={() => setPageEnd()}
+                setPageBegin={() => setPageBegin()}
+            />}
         </div>
     )
 };

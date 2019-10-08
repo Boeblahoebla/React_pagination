@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 // Component
 ////////////
 
-const PageControlItem = ({icon}) => {
+const PageControlItem = ({icon, setPage}) => {
 
     // Generate the icon to use as control
     let controlIcon = '';
