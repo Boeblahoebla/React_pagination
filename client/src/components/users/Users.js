@@ -61,7 +61,11 @@ const Users = () => {
     const setPageEnd = () => { setPage(data.pages) };
 
     // Set page number handler
-    const selectPage = (value) => { setPage(value) };
+    const selectPage = (value) => {
+        (Math.abs(value) <= data.pages)
+            ? setPage(Math.abs(value))
+            : setPage(data.pages)
+    };
 
     /*************************
      * End of Event handlers *

@@ -35,8 +35,14 @@ const PageControlSearch = ({selectPage}) => {
         <li className="page-item d-flex ml-2 mr-2">
             {/* Attach the reference to the input field */}
             <input
-                className="form-control form-control-sm" type="number"
-                placeholder="Of ga naar pagina..." ref={inputEl}/>
+                className="form-control form-control-sm"
+                type="number"
+                placeholder="Of ga naar pagina..."
+                ref={inputEl}
+                onKeyPress={event => {
+                    event.key === 'Enter' && onSearchClick()
+                }}
+            />
             <button
                 className="btn btn-sm btn-secondary"
                 onClick={() => onSearchClick()}><i className="fas fa-search"/></button>
