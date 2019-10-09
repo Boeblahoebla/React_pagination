@@ -31,24 +31,20 @@ router.get('/all', (req, res) => {
     // Initialize the response;
     let response = {};
 
-    // Find all the users
-    usersModel.find({},{},(err, data) => {
-
+    usersModel.countDocuments((err, count) => {
         // Error handling
         if (err) {
             response = {
                 "error": true,
-                "data": "Problem while fetching the data"
+                "data": "Problem while counting the records"
             };
 
             // Return the negative response to the client
             return res.status(500).json(response);
         }
 
-        // Count the records & calculate the number of pages
-        const numberOfRecords = data.length;
-
-        usersModel.find({},{},query,(err, data) => {
+        count > 0 &&
+        usersModel.find({}, {}, query, (err, data) => {
             // Error handling
             if (err) {
                 response = {
@@ -63,28 +59,18 @@ router.get('/all', (req, res) => {
             // Generate the response object
             response = {
                 "error": false,
-                "records": numberOfRecords,
+                "records": count,
                 "currentPage": pageNo,
                 "recordsPerPage": size,
-                "pages": Math.ceil(numberOfRecords/size),
+                "pages": Math.ceil(count / size),
                 "data": data
             };
 
             // Return the positive response to the client
             return res.status(200).json(response);
         })
-
-
-    })
+    });
 });
-
-
-// TEST route
-// @public /api/users/
-router.get('/', (req, res) => res.json(
-    { message: "Users route works" })
-);
-
 
 
 // Exports
