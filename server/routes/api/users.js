@@ -66,7 +66,7 @@ router.get('/all', (req, res) => {
                 "records": numberOfRecords,
                 "currentPage": pageNo,
                 "recordsPerPage": size,
-                "pages": numberOfRecords/size,
+                "pages": Math.ceil(numberOfRecords/size),
                 "data": data
             };
 

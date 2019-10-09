@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 // Component
 ////////////
 
-const PageNumberItem = ({pageNumber, active}) => {
+const PageNumberItem = ({pageNumber, active, selectPage}) => {
 
     // Generate the listItem as active or not
     let listItem = '';
@@ -23,9 +23,9 @@ const PageNumberItem = ({pageNumber, active}) => {
 
     // Choose the right  listItem to return
     if(active) {
-        listItem = <li className="page-item"><a className="page-link bg-info text-white" href="#">{pageNumberText}</a></li>
+        listItem = <li className="page-item page-number"><div className="page-link bg-info text-white" onClick={() => selectPage(pageNumber)}>{pageNumberText}</div></li>
     } else {
-        listItem = <li className="page-item"><a className="page-link text-secondary" href="#">{pageNumberText}</a></li>
+        listItem = <li className="page-item page-number"><div className="page-link text-secondary" onClick={() => selectPage(pageNumber)}>{pageNumberText}</div></li>
     }
 
     return (

@@ -27,9 +27,17 @@ const Pagination = ({ data, decrementPage, incrementPage, setPageEnd, setPageBeg
     // Generate the pagination content
     paginationContent = (
         <div className="mb-2">
-            <PageNumbers currentPage={data.currentPage} pages={data.pages}/>
-            <PageControls decrementPage={decrementPage} incrementPage={incrementPage}
-                setPageBegin={setPageBegin} setPageEnd={setPageEnd} selectPage={selectPage}/>
+            <PageNumbers
+                currentPage={data.currentPage}
+                pages={data.pages}
+                selectPage={selectPage}
+            />
+            <PageControls
+                decrementPage={decrementPage}
+                incrementPage={incrementPage}
+                setPageBegin={setPageBegin}
+                setPageEnd={setPageEnd}
+                selectPage={selectPage}/>
         </div>
     );
 
